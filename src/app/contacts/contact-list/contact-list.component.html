@@ -4,14 +4,25 @@
       <div class="panel-heading clearfix">
         <h1 class="pull-left">Contacts</h1>
         <span class="pull-right"
-          ><button class="btn btn-success" routerLink="new">New Contact</button></span
+          ><button class="btn btn-success" routerLink="new">
+            New Contact
+          </button></span
         >
       </div>
       <div class="panel-body">
-        <cms-contact-item
-          *ngFor="let contactItem of contacts"
-          [contact]="contactItem"
-        ></cms-contact-item>
+        <div class="row">
+          <div class="col-xs-12">
+            <cms-contact-item
+              *ngFor="let contact of contacts"
+              [contact]="contact"
+              dnd-draggable
+              [dragEnabled]="true"
+              [dragData]="contact"
+              [dropZones]="['contactGroup']"
+            >
+            </cms-contact-item>
+          </div>
+        </div>
       </div>
     </div>
   </div>
