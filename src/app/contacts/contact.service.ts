@@ -92,7 +92,7 @@ export class ContactService {
       return;
     }
     newContact.id = originalContact.id;
-    Contact[pos] = newContact;
+    this.contacts[pos] = newContact;
     this.storeContacts();
   }
 
