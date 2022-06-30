@@ -1,6 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Message } from './message.model';
-import { MOCKMESSAGES } from './MOCKMESSAGES';
 import { Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -19,7 +18,7 @@ export class MessageService {
   }
 
   getMessages() {
-    this.http.get('https://wdd-430-cms-48f05-default-rtdb.firebaseio.com/messages.json')
+    this.http.get('http://localhost:3000/messages')
 
       .subscribe(
         // success method
@@ -69,7 +68,7 @@ export class MessageService {
       'Content-Type': 'application/json'
     });
 
-    this.http.put('https://wdd-430-cms-48f05-default-rtdb.firebaseio.com/messages.json', messages, { headers: headers })
+    this.http.put('http://localhost:3000/messages', messages, { headers: headers })
       .subscribe(
         () => {
           this.messageListChangedEvent.next(this.messages.slice());
